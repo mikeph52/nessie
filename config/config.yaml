@@ -20,13 +20,10 @@ threads:
   purge_dups: 16
   kraken2: 16
   repeatmasker: 16
-  annotation: 16
-  nanoplot: 4
   quast: 8
   busco: 16
   multiqc: 8
   nanostat: 8 # i found an alternative: cramino https://github.com/wdecoster/cramino
-
 
 flye:
   read_type: "--nano-hq"    # --nano-raw | --nano-hq | --pacbio-raw | --pacbio-hifi
@@ -47,16 +44,15 @@ kraken2:
   confidence: "0.1" # 0.1 for low conf, 0.2-0.5 for better results
   extra_args: ""
 
-repeatmasker:
-  species: "fungi" # NCBI species name or leave blank and set custom_lib
-  custom_lib: ""   # path to custom repeat library FASTA
-  extra_args: "-nolow"
-
-annotation:
-  species_name: "my_organism"
-  rnaseq_bam:  ""           
-  protein_fa:  ""           
-  extra_args:  ""
+#repeatmasker:
+#  species: "fungi" # NCBI species name or leave blank and set custom_lib
+#  custom_lib: ""   # path to custom repeat library FASTA
+#  extra_args: ""
 
 quast:
+  extra_args: ""
+
+busco:
+  lineage: "fungi_odb10" # replace with your desired target lineage
+  mode: "genome"
   extra_args: ""

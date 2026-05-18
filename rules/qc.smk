@@ -10,7 +10,6 @@ rule nanostat_raw:
     log: "logs/qc/nanostat_raw/{sample}.log"
     shell:
         """
-        mkdir -p {params.outdir}
         NanoStat \
             --fastq {input.fastq} \
             --outdir {params.outdir} \
@@ -31,7 +30,6 @@ rule nanostat_trimmed:
     log: "logs/qc/nanostat_trimmed/{sample}.log"
     shell:
         """
-        mkdir -p {params.outdir}
         NanoStat \
             --fastq {input.fastq} \
             --outdir {params.outdir} \
@@ -39,8 +37,11 @@ rule nanostat_trimmed:
             --threads {threads} \
             2> {log}
         """
+
 rule quast:
     input:
+        # Change this path if skipping polish:
+        # "results/purge_dups/{sample}_purged.fa"
         fasta = "results/polish/medaka/{sample}_polished.fasta",
     output:
         report = "results/qc/quast/{sample}/report.tsv",
@@ -71,7 +72,10 @@ rule quast:
 
 rule busco:
     input:
-        fasta = "results/polish/medaka/{sample}_polished.fasta",
+        # use this if you run polish
+        #fasta = "results/polish/medaka/{sample}_polished.fasta",
+        # use this if you skipping polish
+        fasta = "results/purge_dups/{sample}_purged.fa",
     output:
         summary = "results/qc/busco/{sample}/short_summary.specific.{lineage}.{sample}.txt",
     wildcard_constraints:
