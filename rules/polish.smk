@@ -1,16 +1,16 @@
 rule medaka:
     input:
         fastq = "results/trim_adapters/{sample}_trimmed.fastq.gz",
-        fasta  = "results/assembly/flye/{sample}_assembly.fasta",
+        fasta  = "results/assembly/flye/{sample}/{sample}_assembly.fasta",
     output:
         fasta  = "results/polish/medaka/{sample}_polished.fasta", # fix later
     params:
-        outdir = "results/{sample}/polish/medaka",
+        outdir = "results/polish/medaka",
         model  = config["medaka"]["model"],
         extra  = config["medaka"]["extra_args"],
     threads: config["threads"]["medaka"]
     conda:  "../envs/medaka.yaml"
-    log:    "logs/medaka.log"
+    log:    "logs/medaka/{sample}.log"
     shell:
         """
         medaka_consensus \
@@ -21,8 +21,6 @@ rule medaka:
             -m {params.model} \
             {params.extra} \
             2> {log}
-        """
 
-        # maybe not
-        # probably not
-        # It's not fixed
+        mv {params.outdir}/consensus.fasta {params.outdir}/{sample}_polished.fasta
+        """
