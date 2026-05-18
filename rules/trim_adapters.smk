@@ -15,7 +15,7 @@ rule sort_bam:
         echo "SORTING STARTED" >> {log}
         samtools sort -n -@ {threads} -m 2G -o {output.sorted_bam} {input.bam} 2>> {log}
         echo "SORTING ENDED, CONVERSION STARTED" >> {log}
-        # switch to gzip
+
         samtools fastq -@ {threads} {output.sorted_bam} | bgzip -@ {threads} > {output.fastq} 2>> {log}
         echo "CONVERSION ENDED" >> {log}
         echo "$(date): Samtools completed"
@@ -35,5 +35,5 @@ rule porechop:
         echo "$(date): Porechop is starting..."
         porechop -i {input.fastq} -o {output.trimmed} --threads {threads} 2>> {log}
         echo "$(date): Porechop completed"
-        echo "$(date): Trimming adapters completed.
+        echo "$(date): Trimming adapters completed."
         """

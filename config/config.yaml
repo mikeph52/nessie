@@ -13,7 +13,7 @@ genome_size: "500m"
 
 threads:
   samtools: 16
-  porechop: 20
+  porechop: 16
   flye: 32
   hifiasm: 32
   medaka: 8 # still idkno if im gonna use it

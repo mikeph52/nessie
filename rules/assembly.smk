@@ -12,7 +12,7 @@ rule flye_assembly:
         extra     = config["flye"]["extra_args"],
     threads: config["threads"]["flye"]
     conda: "envs/assembly.yaml"
-    log: "logs/flye/flye.log"
+    log: "logs/flye/{sample}.log"
     shell:
         """
         mkdir -p logs/flye/
@@ -39,11 +39,11 @@ rule hifiasm_assembly:
         fasta  = "results/assembly/hifiasm/{sample}_assembly.fasta",
     params:
         outdir = "results/assembly/hifiasm/{sample}",
-        asm_ext = "{sample}.asm"
+        asm_ext = "{sample}.asm",
         extra = config["hifiasm"]["extra_args"],
     threads: config["threads"]["hifiasm"]
     conda:  "envs/assembly.yaml"
-    log:    "logs/hifiasm/hifiasm.log"
+    log:    "logs/hifiasm/{sample}.log"
     shell:
         """
         mkdir -p logs/hifiasm/
