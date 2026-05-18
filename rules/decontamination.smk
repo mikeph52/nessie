@@ -15,7 +15,7 @@ rule decontamination:
     shell:
         """
         mkdir data/kraken2-db
-        kraken2-build --standard --db kraken2-db
+        kraken2-build --standard --db {input.db}
 
         kraken2 \
             --db {input.db} \
