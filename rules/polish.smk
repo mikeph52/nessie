@@ -9,7 +9,7 @@ rule medaka:
         model  = config["medaka"]["model"],
         extra  = config["medaka"]["extra_args"],
     threads: config["threads"]["medaka"]
-    conda:  "../envs/medaka.yaml"
+    conda:  "envs/polish.yaml"
     log:    "logs/medaka/{sample}.log"
     shell:
         """
