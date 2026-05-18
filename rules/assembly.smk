@@ -39,6 +39,7 @@ rule hifiasm_assembly:
         fasta  = "results/assembly/hifiasm/{sample}_assembly.fasta",
     params:
         outdir = "results/assembly/hifiasm/{sample}",
+        asm_ext = "{sample}.asm"
         extra = config["hifiasm"]["extra_args"],
     threads: config["threads"]["hifiasm"]
     conda:  "envs/assembly.yaml"
@@ -51,7 +52,7 @@ rule hifiasm_assembly:
         echo "$(date): Hifiasm is starting..."
 
         hifiasm \
-            -o {params.outdir} \
+            -o {params.outdir}/{params.asm_ext} \
             -t {threads} \
             {params.extra} \
             {input.fastq} \
