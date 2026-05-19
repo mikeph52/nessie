@@ -14,12 +14,12 @@ include: "rules/qc.smk"
 
 rule all:
     input:
-        expand("results/qc/nanostat/{sample}_raw/NanoStats.txt",     sample=SAMPLES),
+        expand("results/qc/nanostat/{sample}_raw/NanoStats.txt", sample=SAMPLES),
         expand("results/qc/nanostat/{sample}_trimmed/NanoStats.txt", sample=SAMPLES),
-        expand("results/trim_adapters/{sample}_trimmed.fastq.gz",    sample=SAMPLES),
+        expand("results/trim_adapters/{sample}_trimmed.fastq.gz", sample=SAMPLES),
         expand("results/assembly/{assembler}/{sample}_assembly.fasta", assembler=ASSEMBLER, sample=SAMPLES),
-        expand("results/polish/medaka/{sample}_polished.fasta",      sample=SAMPLES),
-        expand("results/purge_dups/{sample}_purged.fa",              sample=SAMPLES),
-        expand("results/decontamination/{sample}_dec.fa",            sample=SAMPLES),
-        #expand("results/masking/{sample}_masked.fa",                 sample=SAMPLES),
+        expand("results/polish/medaka/{sample}_polished.fasta", sample=SAMPLES),
+        expand("results/purge_dups/{sample}_purged.fa", sample=SAMPLES),
+        expand("results/decontamination/{sample}_dec.fa", sample=SAMPLES),
+        #expand("results/masking/{sample}_masked.fa", sample=SAMPLES),
         #"results/qc/multiqc/multiqc_report.html",
