@@ -26,7 +26,7 @@ threads:
   nanostat: 8 # i found an alternative: cramino https://github.com/wdecoster/cramino
 
 flye:
-  read_type: "--nano-hq"    # --nano-raw | --nano-hq | --pacbio-raw | --pacbio-hifi
+  read_type: "--nano-hq"    # --nano-raw # --nano-hq # --pacbio-raw # --pacbio-hifi
   extra_args: ""
 
 hifiasm:
