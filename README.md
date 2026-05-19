@@ -7,7 +7,7 @@ The pipeline is based on the one used in _De Novo Genome Assembly for an Endange
 ## Workflow
 ### Pipeline structure
 
-![](docs/snakemake_workflow.png)
+![](docs/snakemake_workflow_2.png)
 
 ### Project structure
 ```bash
@@ -30,7 +30,6 @@ The pipeline is based on the one used in _De Novo Genome Assembly for an Endange
 ├── README.md
 ├── results
 ├── rules
-│   ├── annotation.smk
 │   ├── assembly.smk
 │   ├── custom_k2_db.smk
 │   ├── decontamination.smk
@@ -63,15 +62,14 @@ Some recomended options on threads:
 | Tool | Threads |
 |------|---------|
 | samtools | 16 |
-| porechop | 8 |
+| porechop | 16 |
 | flye | 32 |
 | hifiasm | 32 |
 | medaka | 8 |
 | purge_dups | 16 |
 | kraken2 | 16 |
 | repeatmasker | 16 |
-| annotation | 16 |
-| nanoplot | 4 |
+| nanostat | 8 |
 | quast | 8 |
 | busco | 16 |
 | multiqc | 8 |
@@ -85,11 +83,10 @@ Some recomended options on threads:
 - **RepeatMasker**
 - **QUAST**
 - **BUSCO**
-- **TOGA**
 - **Kraken 2**
 - **Seqkit**
 - **NCBI Datasets** (_Optional_)
-- **BlobTolkit** (_Optional_)
+- **BlobToolkit** (_Optional_)
 
 ## Installation
 ### 1. Conda
@@ -161,6 +158,16 @@ Continue? (Y/N):
 If you want to revert changes made by the `setup.sh` script, run the `reset.sh` inside the `scripts/` folder.
 
 ## Usage
+### Execution with Slurm
+To execute the workflow in an HPC System with the Slurm workflow manager installed, execute the `workflow.sh` script.
+```bash
+sbatch workflow.sh
+```
+### Manual execution
+Inside the project folder, run the following:
+```bash
+snakemake -j 20 # select the cores you need
+```
 
 ### Under Construction :-(
 
