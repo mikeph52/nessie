@@ -19,7 +19,6 @@ threads:
   medaka: 8 # still idkno if im gonna use it
   purge_dups: 16
   kraken2: 16
-  repeatmasker: 16
   quast: 8
   busco: 16
   multiqc: 8
@@ -33,7 +32,7 @@ hifiasm:
   extra_args: ""
 
 medaka:
-  model: "r1041_e82_400bps_hac_g632"   # i dkno if we need to use it
+  model: "dorado"   # i dkno if we need to use it
   extra_args: ""
 
 purge_dups:
@@ -43,11 +42,6 @@ kraken2:
   db: "data/kraken2_db" # path to Kraken2 db
   confidence: "0.1" # 0.1 for low conf, 0.2-0.5 for better results
   extra_args: ""
-
-#repeatmasker:
-#  species: "fungi" # NCBI species name or leave blank and set custom_lib
-#  custom_lib: ""   # path to custom repeat library FASTA
-#  extra_args: ""
 
 quast:
   extra_args: ""

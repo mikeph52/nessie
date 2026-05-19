@@ -7,7 +7,7 @@ The pipeline is based on the one used in _De Novo Genome Assembly for an Endange
 ## Workflow
 ### Pipeline structure
 
-![](docs/snakemake_workflow_2.png)
+![](docs/snakemake_workflow_3.png)
 
 ### Project structure
 ```bash
@@ -20,7 +20,6 @@ The pipeline is based on the one used in _De Novo Genome Assembly for an Endange
 │   ├── annotation.yaml
 │   ├── assembly.yaml
 │   ├── decontamination.yaml
-│   ├── masking.yaml
 │   ├── polish.yaml
 │   ├── qc.yaml
 │   ├── rm_haplotigs.yaml
@@ -33,7 +32,6 @@ The pipeline is based on the one used in _De Novo Genome Assembly for an Endange
 │   ├── assembly.smk
 │   ├── custom_k2_db.smk
 │   ├── decontamination.smk
-│   ├── masking.smk
 │   ├── polish.smk
 │   ├── qc.smk
 │   ├── rm_haplotigs.smk
@@ -57,7 +55,7 @@ The total resources needed are based on the size of the data and the genome that
 - Slurm Workload Manager 
 
 Some recomended options on threads:
-(These are the default settings in `config.yaml`)
+(These are the default settings in `config.yaml` based on the _Saccharomyces cerevisiae_)
 
 | Tool | Threads |
 |------|---------|
@@ -68,7 +66,6 @@ Some recomended options on threads:
 | medaka | 8 |
 | purge_dups | 16 |
 | kraken2 | 16 |
-| repeatmasker | 16 |
 | nanostat | 8 |
 | quast | 8 |
 | busco | 16 |
@@ -80,11 +77,11 @@ Some recomended options on threads:
 - **Porechop**
 - **Medaka**
 - **Purge_dups**
-- **RepeatMasker**
 - **QUAST**
 - **BUSCO**
 - **Kraken 2**
 - **Seqkit**
+- **Samtools**
 - **NCBI Datasets** (_Optional_)
 - **BlobToolkit** (_Optional_)
 
@@ -158,6 +155,59 @@ Continue? (Y/N):
 If you want to revert changes made by the `setup.sh` script, run the `reset.sh` inside the `scripts/` folder.
 
 ## Usage
+### Workflow configuration
+All settings and configuration is managed from the [config.yaml](config/config.yaml), found in the `config/` folder. Inside the config file there are 5 sections:
+
+- **Samples**
+Load your .BAM files here.
+
+```yaml
+samples: #.BAM files
+  - sample1
+  - sample2
+  # etc
+```
+- **Assembler**
+
+Select the assembler to use on the assembly between **Flye** for Nanopore reads and **Hifiasm** for PacBio HiFi reads.
+```yaml
+assembler: flye #flye or hifiasm
+```
+
+- **Genome size**
+
+Enter the genome size of the organism. It's required for **Flye** and **QUAST** to run.
+```yaml
+genome_size: "500m"
+```
+
+- **Threads**
+
+Select the threads for each tool, depending on the available resources and the 
+
+```yaml
+threads:
+  samtools: 16
+  porechop: 16
+  flye: 32
+# . . . 
+```
+
+- **Tools arguments**
+Here you can add additional arguments for the tools in this workflow.
+
+```yaml
+flye:
+  read_type: "--nano-hq"    # --nano-raw # --nano-hq # --pacbio-raw # --pacbio-hifi
+  extra_args: ""
+
+busco:
+  lineage: "fungi_odb10" # example for S.cerevisiae
+  mode: "genome"
+  extra_args: ""
+# . . . 
+```
+
 ### Execution with Slurm
 To execute the workflow in an HPC System with the Slurm workflow manager installed, execute the `workflow.sh` script.
 ```bash
@@ -169,20 +219,23 @@ Inside the project folder, run the following:
 snakemake -j 20 # select the cores you need
 ```
 
-### Under Construction :-(
-
-
-
-
-
 ## Acknowledgements
 
 All data used for the development of this workflow were provided by the
 **Institute of Marine Biology, Biotechnology and Aquaculture (IMBBC)**
 of the **Hellenic Centre for Marine Research (HCMR)**, Heraklion, Crete.
-This workflow was developed and executed on the **Zorbas HPC** infrastructure of IMBBC-HCMR.
+This workflow was ~~developed and~~ executed on the **Zorbas HPC** infrastructure of IMBBC-HCMR.
 
 ## References
 - Hauff, L., Rasoanaivo, N.E., Razafindrakoto, A., Ravelonjanahary, H., Wright, P.C., Rakotoarivony, R. and Bergey, C.M. (2025), De Novo Genome Assembly for an Endangered Lemur Using Portable Nanopore Sequencing in Rural Madagascar. Ecol Evol, 15: e70734. [https://doi.org/10.1002/ece3.70734](https://doi.org/10.1002/ece3.70734)
 - Bekavac M, Coimbra R, Busa VF, et al. De novo genome assembly of Ansell's mole-rat (Fukomys anselli). G3 (Bethesda). 2026;16(1):jkaf271. doi:10.1093/g3journal/jkaf271
 - Kolmogorov, M., Yuan, J., Lin, Y. et al. Assembly of long, error-prone reads using repeat graphs. Nat Biotechnol 37, 540–546 (2019). https://doi.org/10.1038/s41587-019-0072-8
+- Cheng, H., Asri, M., Lucas, J., Koren, S., Li, H. (2024) Scalable telomere-to-telomere assembly for diploid and polyploid genomes with double graph. Nat Methods, 21:967-970. https://doi.org/10.1038/s41592-024-02269-8
+- Tegenfeldt F., Kuznetsov D., Manni M., Berkeley M., Zdobnov E.M., Kriventseva E.V. OrthoDB and BUSCO update: annotation of orthologs with wider sampling of genomes.  Nucleic Acids Research, Volume 53, Issue D1, 6 January 2025, Pages D516–D522, https://doi.org/10.1093/nar/gkae987
+- Alla Mikheenko, Vladislav Saveliev, Pascal Hirsch, Alexey Gurevich,
+WebQUAST: online evaluation of genome assemblies,
+Nucleic Acids Research (2023) 51 (W1): W601–W606. doi: 10.1093/nar/gkad406
+First published online: May 17, 2023
+- Wood, D.E., Lu, J. & Langmead, B. Improved metagenomic analysis with Kraken 2. Genome Biol 20, 257 (2019). https://doi.org/10.1186/s13059-019-1891-0
+- Guan D, McCarthy SA, Wood J, Howe K, Wang Y, Durbin R. Identifying and removing haplotypic duplication in primary genome assemblies. Bioinformatics. 2020 May 1;36(9):2896-2898. doi: 10.1093/bioinformatics/btaa025. PMID: 31971576; PMCID: PMC7203741.
+- Shen, Wei, BotondSipos, and LiuyangZhao. 2024. “SeqKit2: A Swiss Army Knife for Sequence and Alignment Processing.” iMeta3, e191. https://doi.org/10.1002/imt2.191

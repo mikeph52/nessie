@@ -9,7 +9,6 @@ include: "rules/polish.smk"        # ONT only — comment out for HiFi
 include: "rules/rm_haplotigs.smk"
 #include: "rules/custom_k2_db.smk" # uncomment to build a custom Kraken2 db
 include: "rules/decontamination.smk"
-#include: "rules/masking.smk"      # uncomment if needed
 include: "rules/qc.smk"
 
 rule all:
