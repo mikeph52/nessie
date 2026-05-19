@@ -3,10 +3,10 @@
 samples:
   - sample1
   - sample2
+  # etc
 
-# Select what assembler you want to use by uncomment with #
+# Select what assembler you want to use: flye or hifiasm
 assembler: flye
-#assembler: hifiasm
 
 # Estimated genome size (for flye and QUAST)
 genome_size: "500m"
