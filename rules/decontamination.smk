@@ -4,7 +4,7 @@ rule decontamination:
         db = "data/kraken2-db/", #not created, just default dir
     output:
         dec_fa = "results/decontamination/{sample}_dec.fa",
-        report = "results/decontamination/kraken2.report"
+        report = "results/decontamination/{sample}_kraken2.report",
     params:
         outdir = "results/decontamination",
         extra = config["kraken2"]["extra_args"],
@@ -21,8 +21,8 @@ rule decontamination:
             --db {input.db} \
             --threads {threads} \
             --confidence {params.confidence}\
-            --output {params.outdir}/kraken2.output \
-            --report {params.outdir}/kraken2.report \
+            --output {output.dec_fa} \
+            --report {output.report} \
             --fasta-input {input.fa} \
             --unclassified-out {output.dec_fa}
         """
