@@ -87,7 +87,7 @@ rule busco:
         extra   = config["busco"].get("extra_args", ""),
     threads: config["threads"]["busco"]
     conda: "envs/qc.yaml"
-    log: "logs/qc/busco/{sample}.log"
+    log: "logs/qc/busco/{sample}.{lineage}.log"
     shell:
         """
         busco \
