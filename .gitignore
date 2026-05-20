@@ -3,3 +3,4 @@ logs/
 results/
 .DS_Store
 scripts/.setup.env
+.snakemake/

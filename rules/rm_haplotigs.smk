@@ -1,6 +1,6 @@
 rule purge_haplotigs:
     input:
-        fasta = "results/assembly/{assembler}/{sample}_assembly.fasta",
+        fasta = f"results/assembly/{ASSEMBLER}/{{sample}}_assembly.fasta",
         fastq = "results/trim_adapters/{sample}_trimmed.fastq.gz",
     output:
         fa  = "results/purge_dups/{sample}_purged.fa",

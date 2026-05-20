@@ -1,7 +1,7 @@
 rule medaka:
     input:
         fastq = "results/trim_adapters/{sample}_trimmed.fastq.gz",
-        fasta  = "results/assembly/flye/{sample}/{sample}_assembly.fasta",
+        fasta  = f"results/assembly/{ASSEMBLER}/{{sample}}_assembly.fasta",
     output:
         fasta  = "results/polish/medaka/{sample}_polished.fasta", # fix later
     params:
