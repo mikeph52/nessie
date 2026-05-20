@@ -22,6 +22,7 @@ echo " - Create directories: data/ logs/ results/"
 echo " - Create subfolders on: data/ results/"
 echo " - Check conda availability"
 echo " - Install snakemake if it is not installed"
+echo " - Remove docs/"
 echo " - Move setup.sh to scripts/"
 
 read -p "Continue? (Y/N): " confirm && [[ $confirm == [yY] || $confirm == [yY][eE][sS] ]] || exit 1
