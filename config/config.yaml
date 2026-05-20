@@ -3,7 +3,7 @@
 samples:
   - sample1
   - sample2
-  # etc
+  # etc 
 
 # Select what assembler you want to use: flye or hifiasm
 assembler: flye
