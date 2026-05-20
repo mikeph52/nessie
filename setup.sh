@@ -54,6 +54,9 @@ echo "conda found: $(conda --version)"
 echo "Installing snakemake..."
 conda create -n snakemake -c conda-forge -c bioconda snakemake mamba -y
 # STEP 6
+echo "Remove docs/..."
+rm -rf docs/
+# STEP 7
 echo "Moving setup.sh to scripts/..."
 mv setup.sh scripts/
 echo "Cd out of the folder and enter again to refresh the project title."
