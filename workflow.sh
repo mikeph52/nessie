@@ -13,9 +13,6 @@ THREADS=32
 
 set -euo pipefail
 
-export LC_ALL=en_US.UTF-8
-export LANG=en_US.UTF-8
-
 source ~/miniconda3/etc/profile.d/conda.sh
 conda activate snakemake
 
