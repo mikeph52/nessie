@@ -12,18 +12,10 @@ The pipeline is based on the one used in _De Novo Genome Assembly for an Endange
 ### Project structure
 ```bash
 .
-├── config.yaml
+├── config
+│   └── config.yaml
 ├── data
-├── docs
-│   └── snakemake_workflow.png
-├── envs
-│   ├── annotation.yaml
-│   ├── assembly.yaml
-│   ├── decontamination.yaml
-│   ├── polish.yaml
-│   ├── qc.yaml
-│   ├── rm_haplotigs.yaml
-│   └── trim_adapters.yaml
+├── kraken2_db.sh
 ├── LICENSE
 ├── logs
 ├── README.md
@@ -32,6 +24,13 @@ The pipeline is based on the one used in _De Novo Genome Assembly for an Endange
 │   ├── assembly.smk
 │   ├── custom_k2_db.smk
 │   ├── decontamination.smk
+│   ├── envs
+│   │   ├── assembly.yaml
+│   │   ├── decontamination.yaml
+│   │   ├── polish.yaml
+│   │   ├── qc.yaml
+│   │   ├── rm_haplotigs.yaml
+│   │   └── trim_adapters.yaml
 │   ├── polish.smk
 │   ├── qc.smk
 │   ├── rm_haplotigs.smk
