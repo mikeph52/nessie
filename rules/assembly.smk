@@ -16,7 +16,7 @@ rule flye_assembly:
     shell:
         """
         mkdir -p logs/flye/
-        mkdir -p results/assembly/flye/{sample}
+        mkdir -p results/assembly/flye/{wildcards.sample}
         echo "$(date): Assembly is starting (rules/assembly.smk)..."
         echo "$(date): Flye is starting..."
 
@@ -27,6 +27,9 @@ rule flye_assembly:
             --threads {threads} \
             {params.extra} \
             2> {log}
+        mv {params.outdir}/assembly.fasta results/assembly/flye/{wildcards.sample}_assembly.fasta
+        mv {params.outdir}/assembly_info.txt results/assembly/flye/{wildcards.sample}_assembly_info.txt
+        mv {params.outdir}/assembly_graph.gfa results/assembly/flye/{wildcards.sample}_assembly_graph.gfa
 
         echo "$(date): Flye completed."
         echo "$(date): Assembly completed."
@@ -47,7 +50,7 @@ rule hifiasm_assembly:
     shell:
         """
         mkdir -p logs/hifiasm/
-        mkdir -p results/assembly/hifiasm/{sample}
+        mkdir -p results/assembly/hifiasm/{wildcards.sample}
         echo "$(date): Assembly is starting (rules/assembly.smk)..."
         echo "$(date): Hifiasm is starting..."
 
@@ -61,7 +64,7 @@ rule hifiasm_assembly:
         echo "$(date): Hifiasm completed."
         echo "$(date): Converting gfa to FASTA..."
         # convert .gfa to fasta
-        awk '/^S/{print ">"$2"\n"$3}' results/assembly/hifiasm/{sample}.bp.p_ctg.gfa > results/assembly/hifiasm/{sample}_assembly.fasta
+        awk '/^S/{print ">"$2"\n"$3}' results/assembly/hifiasm/{wildcards.sample}.bp.p_ctg.gfa > results/assembly/hifiasm/{wildcards.sample}_assembly.fasta
 
         echo "$(date): Conversion completed."
         echo "$(date): Assembly completed."
