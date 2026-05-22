@@ -3,6 +3,6 @@ channels:
   - bioconda
   - defaults
 dependencies:
-  - purge-dups
+  - purge_dups
   - pigz
   - minimap2

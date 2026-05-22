@@ -32,7 +32,7 @@ hifiasm:
   extra_args: ""
 
 medaka:
-  model: "dorado"   # i dkno if we need to use it
+  model: "r1041_e82_400bps_hac_g632"   # i dkno if we need to use it
   extra_args: ""
 
 purge_dups:

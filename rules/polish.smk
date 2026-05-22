@@ -5,7 +5,7 @@ rule medaka:
     output:
         fasta  = "results/polish/medaka/{sample}_polished.fasta", # fix later
     params:
-        outdir = "results/polish/medaka",
+        outdir = "results/polish/medaka/{sample}",
         model  = config["medaka"]["model"],
         extra  = config["medaka"]["extra_args"],
     threads: config["threads"]["medaka"]
