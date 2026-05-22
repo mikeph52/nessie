@@ -4,3 +4,4 @@ channels:
   - defaults
 dependencies:
   - medaka=1.11.3
+  - setuptools
