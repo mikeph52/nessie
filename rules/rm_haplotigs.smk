@@ -6,9 +6,9 @@ rule purge_haplotigs:
         fa  = "results/purge_dups/{sample}_purged.fa",
         hap = "results/purge_dups/{sample}_hap.fa",
     params:
-        outdir    = "results/purge_dups/{sample}",
+        outdir = "results/purge_dups/{sample}",
         read_type = config["purge_dups"].get("read_type", "-xmap-ont"),
-        extra     = config["purge_dups"].get("extra_args", ""),
+        extra = config["purge_dups"].get("extra_args", ""),
     threads: config["threads"]["purge_dups"]
     conda:  "envs/rm_haplotigs.yaml"
     log:    "logs/purge_dups/{sample}.log"
@@ -22,11 +22,12 @@ rule purge_haplotigs:
         pbcstat {params.outdir}/reads.paf.gz -O {params.outdir} 2>> {log}
         calcuts {params.outdir}/PB.stat > {params.outdir}/cutoffs 2>> {log}
 
-        minimap2 -t {threads} -xasm5 -DP {input.fasta} {input.fasta}| pigz -p {threads} > {params.outdir}/self.paf.gz 2>> {log}
+        minimap2 -t {threads} -xasm5 -DP {input.fasta} {input.fasta} > {params.outdir}/self.paf 2>> {log}
+        
         purge_dups \
             -T {params.outdir}/cutoffs \
             -c {params.outdir}/PB.base.cov \
-            {params.outdir}/self.paf.gz > {params.outdir}/dups.bed 2>> {log}
+            {params.outdir}/self.paf > {params.outdir}/dups.bed 2>> {log}
 
         get_seqs -e {params.outdir}/dups.bed {input.fasta} \
             -p {params.outdir}/{wildcards.sample} 2>> {log}
