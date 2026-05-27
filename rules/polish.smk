@@ -22,5 +22,5 @@ rule medaka:
             {params.extra} \
             2> {log}
 
-        mv {params.outdir}/consensus.fasta {params.outdir}/{wildcards.sample}_polished.fasta
+        mv {params.outdir}/consensus.fasta {output.fasta}
         """
