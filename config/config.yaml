@@ -35,7 +35,7 @@ medaka:
   model: "r1041_e82_400bps_hac_g632"   # i dkno if we need to use it
   extra_args: ""
 
-purge_dups:
+purge_haplotigs:
   extra_args: ""
 
 kraken2:
