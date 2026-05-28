@@ -1,6 +1,6 @@
 rule decontamination:
     input:
-        fa = "results/purge_dups/{sample}_purged.fa",
+        fa = "results/purge_haplotigs/{sample}_purged.fa",
     output:
         dec_fa = "results/decontamination/{sample}_dec.fa",
         report = "results/decontamination/{sample}_kraken2.report",

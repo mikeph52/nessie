@@ -8,8 +8,8 @@ samples:
 # Select what assembler you want to use: flye or hifiasm
 assembler: flye
 
-# Estimated genome size (for flye and QUAST)
-genome_size: "500m"
+# Estimated genome size (for flye and QUAST), QUAST only supports the raw number instead of the "500m"
+genome_size: "500000000"
 
 threads:
   samtools: 16
@@ -17,7 +17,7 @@ threads:
   flye: 32
   hifiasm: 32
   medaka: 8 # still idkno if im gonna use it
-  purge_dups: 16
+  purge_haplotigs: 16
   kraken2: 16
   quast: 8
   busco: 16
@@ -36,6 +36,9 @@ medaka:
   extra_args: ""
 
 purge_dups:
+  low: 5
+  mid: 105    # haploid coverage peak
+  high: 210   # diploid coverage peak still trying to find a way to automate this
   extra_args: ""
 
 kraken2:
