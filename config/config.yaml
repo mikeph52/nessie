@@ -36,10 +36,6 @@ medaka:
   extra_args: ""
 
 purge_dups:
-  #low: 5
-  #mid: 105    # haploid coverage peak
-  #high: 210   # diploid coverage peak still trying to find a way to automate this
-  # delete later
   extra_args: ""
 
 kraken2:
