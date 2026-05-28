@@ -25,12 +25,7 @@ rule purge_haplotigs:
         samtools index {params.outdir}/aligned.bam 2>> {log}
 
         echo "$(date): Generating coverage histogram..."
-        purge_haplotigs hist \
-            -b {params.outdir}/aligned.bam \
-            -g {input.fasta} \
-            -t {threads} \
-            -o {params.outdir}/coverage \
-            2>> {log}
+        purge_haplotigs hist -b {params.outdir}/aligned.bam -g {input.fasta} -t {threads} -o {params.outdir}/coverage 2>> {log}
 
         echo "$(date): Computing cutoffs from histogram..."
 
@@ -58,7 +53,7 @@ rule purge_haplotigs:
             -o {params.outdir}/{wildcards.sample}_purged \
             2>> {log}
 
-        mv {params.outdir}/{wildcards.sample}_purged.fasta        {output.fa}
+        mv {params.outdir}/{wildcards.sample}_purged.fasta {output.fa}
         mv {params.outdir}/{wildcards.sample}_purged.haplotigs.fasta {output.hap}
 
         echo "$(date): Purge_haplotigs completed"
