@@ -28,7 +28,8 @@ rule purge_haplotigs:
         
         purge_haplotigs hist -b {params.outdir}/aligned.bam -g {input.fasta} -t {threads} 2>> {log}
 
-        mv aligned.bam.gencov {params.outdir}/aligned.bam.gencov
+        mv aligned.bam.*.gencov {params.outdir}/aligned.bam.gencov
+        mv aligned.bam.*.png    {params.outdir}/ 2>/dev/null || true
         
         echo "$(date): Computing cutoffs from histogram..."
 
@@ -58,6 +59,8 @@ rule purge_haplotigs:
 
         mv {params.outdir}/{wildcards.sample}_purged.fasta {output.fa}
         mv {params.outdir}/{wildcards.sample}_purged.haplotigs.fasta {output.hap}
+        # cleanup temp
+        rm -rf tmp_purge_haplotigs/
 
         echo "$(date): Purge_haplotigs completed"
         echo "$(date): Remove haplotigs completed"

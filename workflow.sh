@@ -14,6 +14,7 @@ THREADS=32
 set -euo pipefail
 
 source ~/miniconda3/etc/profile.d/conda.sh
-conda activate snakemake
+conda activate snakemake_assembly
 
+# remove dry run before actually execute the workflow
 snakemake --cores "$THREADS" --use-conda --dry-run

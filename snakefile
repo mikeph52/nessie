@@ -22,4 +22,4 @@ rule all:
         expand("results/decontamination/{sample}_dec.fa", sample=SAMPLES),
         expand("results/qc/quast/{sample}/report.tsv", sample=SAMPLES),
         expand("results/qc/busco/{sample}/short_summary.specific.{lineage}.{sample}.txt", sample=SAMPLES, lineage=config["busco"]["lineage"]),
-        #"results/qc/multiqc/multiqc_report.html", 
+        expand("results/qc/multiqc/multiqc_report.html", sample=SAMPLES),

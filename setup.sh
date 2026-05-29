@@ -22,6 +22,7 @@ echo " - Create directories: data/ logs/ results/"
 echo " - Create subfolders on: data/ results/"
 echo " - Check conda availability"
 echo " - Install snakemake if it is not installed"
+echo " - Create 'snakemake_assembly' conda venv"
 echo " - Remove docs/"
 echo " - Move setup.sh to scripts/"
 
@@ -53,7 +54,7 @@ fi
 echo "conda found: $(conda --version)"
 # STEP 5
 echo "Installing snakemake..."
-conda create -n snakemake -c conda-forge -c bioconda snakemake mamba -y
+conda create -n snakemake_assembly -c conda-forge -c bioconda snakemake mamba -y
 # STEP 6
 echo "Remove docs/..."
 rm -rf docs/
