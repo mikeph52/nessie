@@ -37,7 +37,7 @@ echo "Creating directories: data/ logs/ results/..."
 mkdir data logs results
 # STEP 3
 echo "Creating subdfolders on: data/ results/..."
-mkdir -p data/kraken2 data/
+mkdir -p data/
 mkdir -p results/sort_bam results/trim_adapters results/assembly results/purge_haplotigs results/polish 
 mkdir -p results/assembly/flye/ results/assembly/hifiasm/
 # STEP 4
