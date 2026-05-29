@@ -25,14 +25,14 @@ rule purge_haplotigs:
         samtools index {params.outdir}/aligned.bam 2>> {log}
 
         echo "$(date): Generating coverage histogram..."
-        # lets hope it works this time
-        cd {params.outdir}
+        
+        purge_haplotigs hist -b {params.outdir}/aligned.bam -g {input.fasta} -t {threads} 2>> {log}
 
-        purge_haplotigs hist -b aligned.bam -g {input.fasta} -t {threads} 2>> {log}
-        cd -
+        mv aligned.bam.gencov {params.outdir}/aligned.bam.gencov
+        
         echo "$(date): Computing cutoffs from histogram..."
 
-        minimap2 -t {threads} -xmap-ont {input.fasta} {input.fastq}| pigz -p {threads} > {params.outdir}/reads.paf.gz 2>> {log}
+        minimap2 -t {threads} -xmap-ont {input.fasta} {input.fastq} | pigz -p {threads} > {params.outdir}/reads.paf.gz 2>> {log}
         pbcstat {params.outdir}/reads.paf.gz -O {params.outdir} 2>> {log}
         calcuts {params.outdir}/PB.stat > {params.outdir}/cutoffs 2>> {log}
 
