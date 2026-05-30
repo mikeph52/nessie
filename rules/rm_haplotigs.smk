@@ -33,16 +33,12 @@ rule purge_haplotigs:
         
         echo "$(date): Computing cutoffs from histogram..."
 
-        minimap2 -t {threads} -xmap-ont {input.fasta} {input.fastq} | pigz -p {threads} > {params.outdir}/reads.paf.gz 2>> {log}
-        pbcstat {params.outdir}/reads.paf.gz -O {params.outdir} 2>> {log}
-        calcuts {params.outdir}/PB.stat > {params.outdir}/cutoffs 2>> {log}
+        LOW=5
+        MID=$(awk '{{sum+=$1*$2; count+=$2}} END{{print int(sum/count)}}' {params.outdir}/aligned.bam.gencov)
+        HIGH=$(( MID * 2 ))
 
-        LOW=$(awk  'NR==1{{print $1}}' {params.outdir}/cutoffs)
-        MID=$(awk  'NR==1{{print $3}}' {params.outdir}/cutoffs)
-        HIGH=$(awk 'NR==1{{print $5}}' {params.outdir}/cutoffs)
-
-        echo "$(date): Cutoffs — low=$LOW mid=$MID high=$HIGH" 2>> {log}
-
+        echo "$(date): Cutoffs — low=$LOW mid=$MID high=$HIGH" | tee -a {log}
+        
         echo "$(date): Setting coverage cutoffs..."
         purge_haplotigs cov \
             -i {params.outdir}/aligned.bam.gencov \
