@@ -63,7 +63,7 @@ Some recomended options on threads:
 | flye | 32 |
 | hifiasm | 32 |
 | medaka | 8 |
-| purge_dups | 16 |
+| purge_haplotigs | 16 |
 | kraken2 | 16 |
 | nanostat | 8 |
 | quast | 8 |
@@ -75,9 +75,11 @@ Some recomended options on threads:
 - **Hifiasm**
 - **Porechop**
 - **Medaka**
-- **Purge_dups**
+- **Purge_haplotigs**
+- **Nanostat**
 - **QUAST**
 - **BUSCO**
+- **multiQC**
 - **Kraken 2**
 - **Seqkit**
 - **Samtools**
