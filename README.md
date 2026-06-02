@@ -1,4 +1,4 @@
-# De novo genome assembly workflow for mammalian species using long reads workflow
+# Nessie: A de novo genome assembly workflow for mammalian species using long reads
 
 ## Introduction
 This workflow supports sequecing data from both Oxford Nanopore and Pacbio HiFi sequencers, built with snakemake for maximum compatibility.
@@ -219,6 +219,13 @@ Inside the project folder, run the following:
 ```bash
 snakemake -j 20 # select the cores you need
 ```
+## Changelog
+_Changelog starts from the first public version (v.0.18.1, 1/6/2026)_
+### Version 0.18.1 (1/6/2026)
+- Old rm_haplotigs.smk removed.
+- Fixed automatic coverage cutoff computation.
+- Formatting issues fixed.
+- Fixed medaka version in conda env.
 
 ## Acknowledgements
 
