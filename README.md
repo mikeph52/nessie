@@ -232,7 +232,7 @@ _Changelog starts from the first public version (v.0.18.1, 1/6/2026)_
 All data used for the development of this workflow were provided by the
 **Institute of Marine Biology, Biotechnology and Aquaculture (IMBBC)**
 of the **Hellenic Centre for Marine Research (HCMR)**, Heraklion, Crete.
-This workflow was ~~developed and~~ executed on the **Zorbas HPC** infrastructure of IMBBC-HCMR (Zafeiropoulos et al., 2021).
+This workflow was developed and executed on the **Zorbas HPC** infrastructure of IMBBC-HCMR (Zafeiropoulos et al., 2021).
 
 ## References
 
