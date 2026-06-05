@@ -227,6 +227,14 @@ _Changelog starts from the first public version (v.0.18.1, 1/6/2026)_
 - Formatting issues fixed.
 - Fixed medaka version in conda env.
 
+## Tests & Benchamrks
+The workflow has been tested on 3 assemblies so far:
+- **_Clonostachys chloroleuca_ strain Cc878**
+- **_Eulemur rufifrons_**
+- **_Alexandromys oeconomus_**
+
+For the results of each test run, visit [benchmarks](docs/benchmarks.md).
+
 ## Acknowledgements
 
 All data used for the development of this workflow were provided by the
