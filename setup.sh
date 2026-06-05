@@ -3,6 +3,7 @@
 set -euo pipefail
 
 echo "-------------------------------------"
+echo "|              Nessie               |"
 echo "|De novo assembly snakemake workflow|"
 echo "|         by mikeph52, 2026         |"
 echo "-------------------------------------"
@@ -31,7 +32,7 @@ read -p "Continue? (Y/N): " confirm && [[ $confirm == [yY] || $confirm == [yY][e
 # STEP 1
 echo "Naming project '$PROJECT'..."
 cd ..
-mv de_novo_assembly_workflow "$PROJECT"
+mv nessie "$PROJECT"
 cd "$PROJECT"
 # STEP 2
 echo "Creating directories: data/ logs/ results/..."

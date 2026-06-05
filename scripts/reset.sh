@@ -3,6 +3,7 @@
 set -euo pipefail
 
 echo "-------------------------------------"
+echo "|              Nessie               |"
 echo "|De novo assembly snakemake workflow|"
 echo "|         by mikeph52, 2026         |"
 echo "-------------------------------------"
@@ -28,7 +29,7 @@ PROJECT=$(cat scripts/.setup.env)
 cd ..
 mv "$PROJECT"/scripts/setup.sh "$PROJECT"
 # STEP 3: rename proj to default
-mv "$PROJECT" de_novo_genome_assembly_workflow
+mv "$PROJECT" nessie
 # STEP 4: remove snakemake env
 conda env remove -n snakemake
 
