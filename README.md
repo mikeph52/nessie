@@ -126,7 +126,7 @@ Even if you have a previous bioconda setup, it is recommended to re-run these co
 **Download the repository**:
 You can simply `git clone` the repo, or download it manually from GitHub or the new GitHub CLI app.
 ```bash
-git clone https://github.com/mikeph52/de_novo_assembly_workflow.git
+git clone https://github.com/mikeph52/nessie.git
 ```
 **Run setup.sh from inside the folder**:
 ```bash
