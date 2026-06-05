@@ -139,6 +139,7 @@ Follow instructions. The `setup.sh` script enables you to rename the folder to y
 Here's an example of the script:
 ```
 -------------------------------------
+|              Nessie               |
 |De novo assembly snakemake workflow|
 |         by mikeph52, 2026         |
 -------------------------------------
