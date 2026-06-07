@@ -40,9 +40,7 @@ rule nanostat_trimmed:
 
 rule quast:
     input:
-        # Change this path if skipping polish:
-        # "results/purge_haplotigs/{sample}_purged.fa"
-        fasta = "results/polish/medaka/{sample}_polished.fasta",
+        fasta = "results/purge_haplotigs/{sample}_purged.fa",
     output:
         report = "results/qc/quast/{sample}/report.tsv",
     params:
@@ -72,9 +70,6 @@ rule quast:
 
 rule busco:
     input:
-        # use this if you run polish
-        #fasta = "results/polish/medaka/{sample}_polished.fasta",
-        # use this if you skipping polish
         fasta = "results/purge_haplotigs/{sample}_purged.fa",
     output:
         summary = "results/qc/busco/{sample}/short_summary.specific.{lineage}.{sample}.txt",
