@@ -222,6 +222,9 @@ snakemake -j 20 # select the cores you need
 ```
 ## Changelog
 _Changelog starts from the first public version (v.0.18.1, 1/6/2026)_
+### Version 0.19.1 (7/6/2026)
+- Fix issue (https://github.com/mikeph52/nessie/issues/8)
+
 ### Version 0.18.1 (1/6/2026)
 - Old rm_haplotigs.smk removed.
 - Fixed automatic coverage cutoff computation.
