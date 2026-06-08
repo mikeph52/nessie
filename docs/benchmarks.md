@@ -62,7 +62,7 @@
 
 ---
 
-## Test run 2: _Eulemur rufifrons_ (in progress)
+## Test run 2: _Eulemur rufifrons_ 
 
 ### Data Information
 | Field      | Value                    |
