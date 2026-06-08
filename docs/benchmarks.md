@@ -95,4 +95,41 @@
 ---
 
 ### Results
- ## In progress
+
+
+**Read Quality (NanoStat)**
+
+| Metric | Value |
+|---|---|
+| Total reads | 36,553,700 |
+| Total bases | 57,550.9 Mb |
+| Median read length | 795 bp |
+| Read N50 | 2,611 bp |
+| Median quality (Phred) | Q13.9 |
+
+
+**Assembly Statistics (QUAST)**
+
+| Metric | Nessie output | Reference (GenBank) |
+|---|---|---|
+| Assembly length | 2,271.9 Mb | 2.2 Gb |
+| N50 | 1,207.1 Kbp | 1.6 Mb (contig) |
+| L50 | 600 | 397 |
+| Largest contig | 7,257.0 Kbp | — |
+| Assembly level | Contig | Chromosome |
+
+
+**Genome Completeness (BUSCO)**
+
+| Metric | Value |
+|---|---|
+| Lineage | primates_odb10 |
+| Complete BUSCOs | 13,125 (95.2%) |
+| Complete single-copy BUSCOs | 12,957 (94.0%) |
+| Complete duplicated BUSCOs | 168 (1.2%) |
+| Fragmented BUSCOs | 206 (1.5%) |
+| Missing BUSCOs | 449 (3.3%) |
+| Total BUSCO groups searched | 13,780 |
+| BUSCO version | 6.0.0 |
+
+---
