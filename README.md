@@ -1,4 +1,5 @@
 # Nessie: A de novo genome assembly workflow for mammalian species using long reads
+[![Snakemake](https://img.shields.io/badge/snakemake-≥5.6.0-brightgreen.svg?style=flat)](https://snakemake.readthedocs.io)
 
 ## Introduction
 This workflow supports sequecing data from both Oxford Nanopore and Pacbio HiFi sequencers, built with snakemake for maximum compatibility.
