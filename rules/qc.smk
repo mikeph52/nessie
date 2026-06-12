@@ -86,7 +86,7 @@ rule busco:
     threads: config["threads"]["busco"]
     conda: "envs/qc.yaml"
     log: "logs/qc/busco/{sample}.{lineage}.log"
-    benchmark: "benchmarks/busco/{sample}.txt"
+    benchmark: "benchmarks/busco/{sample}.{lineage}.txt"
     shell:
         """
         busco \
@@ -118,7 +118,6 @@ rule multiqc:
         indir  = "results/qc",
     conda: "envs/qc.yaml"
     log: "logs/qc/multiqc.log"
-    benchmark: "benchmarks/multiqc/{sample}.txt"
     shell:
         """
         multiqc \
