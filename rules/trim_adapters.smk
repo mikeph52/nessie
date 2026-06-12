@@ -8,6 +8,7 @@ rule sort_bam:
         "logs/sort_bam/{sample}.log"
     threads: config["threads"]["samtools"]
     conda: "envs/trim_adapters.yaml"
+    benchmark: "benchmarks/sort_bam/{sample}.txt"
     shell:
         """
         echo "$(date): Trimming adapters is starting (rules/trim_adapters.smk)..."
@@ -30,6 +31,7 @@ rule porechop:
         "logs/trim_adapters/{sample}.log"
     threads: config["threads"]["porechop"]
     conda: "envs/trim_adapters.yaml"
+    benchmark: "benchmarks/porechop/{sample}.txt"
     shell:
         """
         echo "$(date): Porechop is starting..."

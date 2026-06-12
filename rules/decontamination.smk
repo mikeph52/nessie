@@ -12,6 +12,7 @@ rule decontamination:
     threads: config["threads"]["kraken2"]
     conda: "envs/decontamination.yaml"
     log: "logs/decontamination/{sample}_decontamination.log"
+    benchmark: "benchmarks/kraken2/{sample}.txt"
     shell:
         """
         kraken2 \

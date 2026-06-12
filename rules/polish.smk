@@ -11,6 +11,7 @@ rule medaka:
     threads: config["threads"]["medaka"]
     conda:  "envs/polish.yaml"
     log:    "logs/medaka/{sample}.log"
+    benchmark: "benchmarks/medaka/{sample}.txt"
     shell:
         """
         medaka_consensus \

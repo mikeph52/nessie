@@ -11,6 +11,7 @@ rule purge_haplotigs:
     threads: config["threads"]["purge_haplotigs"]
     conda:  "envs/rm_haplotigs.yaml"
     log:    "logs/purge_haplotigs/{sample}.log"
+    benchmark: "benchmarks/purge_haplotigs/{sample}.txt"
     shell:
         """
         echo "$(date): Remove haplotigs is starting (rules/rm_haplotigs.smk)..."

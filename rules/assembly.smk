@@ -13,6 +13,7 @@ rule flye_assembly:
     threads: config["threads"]["flye"]
     conda: "envs/assembly.yaml"
     log: "logs/flye/{sample}.log"
+    benchmark: "benchmarks/flye/{sample}.txt"
     shell:
         """
         mkdir -p logs/flye/
@@ -47,6 +48,7 @@ rule hifiasm_assembly:
     threads: config["threads"]["hifiasm"]
     conda:  "envs/assembly.yaml"
     log:    "logs/hifiasm/{sample}.log"
+    benchmark: "benchmarks/hifiasm/{sample}.txt"
     shell:
         """
         mkdir -p logs/hifiasm/
