@@ -1,3 +1,26 @@
+from datetime import datetime
+
+W_VERSION = "0.20.1"
+
+onstart:
+    print(f"""
+            .-') _   ('-.    .-')     .-')               ('-.   
+        ( OO ) )_(  OO)  ( OO ).  ( OO ).           _(  OO)  
+    ,--./ ,--,'(,------.(_)---\_)(_)---\_)  ,-.-') (,------. 
+    |   \ |  |\ |  .---'/    _ | /    _ |   |  |OO) |  .---' 
+    |    \|  | )|  |    \  :` `. \  :` `.   |  |  \ |  |     
+    |  .     |/(|  '--.  '..`''.) '..`''.)  |  |(_/(|  '--.  
+    |  |\    |  |  .--' .-._)   \.-._)   \ ,|  |_.' |  .--'  
+    |  | \   |  |  `---.\       /\       /(_|  |    |  `---. 
+    `--'  `--'  `------' `-----'  `-----'   `--'    `------' 
+                                            by mikeph52 2026
+    
+    Version:  {W_VERSION}
+    Date:     {datetime.now().strftime("%Y-%m-%d %H:%M:%S")}
+    Samples:  {SAMPLES}
+    Assembler:{ASSEMBLER}
+    """)
+
 configfile: "config/config.yaml"
 
 SAMPLES  = config["samples"]
