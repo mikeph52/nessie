@@ -14,7 +14,7 @@ echo ""
 read -p "Continue? (Y/N): " confirm && [[ $confirm == [yY] || $confirm == [yY][eE][sS] ]] || exit 1
 echo ""
 echo " The following changes will happen: "
-echo " - Remove directories: data/ logs/ results/ "
+echo " - Remove directories: data/ logs/ results/ benchmarks/ "
 echo " - Move setup.sh and reset.sh to parent directory"
 echo " - Remove snakemake conda env."
 echo ""
@@ -22,7 +22,7 @@ read -p "Continue? (Y/N): " confirm && [[ $confirm == [yY] || $confirm == [yY][e
 # scripts/ --> parent
 cd ..
 # STEP 1: rm directories
-rm -rf data/ logs/ results/ 
+rm -rf data/ logs/ results/ benchmarks/
 # STEP 2: move setup.sh to parent
 PROJECT=$(cat scripts/.setup.env)
 # parent --> prev
