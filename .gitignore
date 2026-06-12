@@ -5,3 +5,4 @@ results/
 scripts/.setup.env
 .snakemake/
 misc.sh
+benchmarks/

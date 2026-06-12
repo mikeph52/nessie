@@ -35,13 +35,14 @@ cd ..
 mv nessie "$PROJECT"
 cd "$PROJECT"
 # STEP 2
-echo "Creating directories: data/ logs/ results/..."
+echo "Creating directories: data/ logs/ results/ benchmarks/..."
 mkdir data logs results
 # STEP 3
 echo "Creating subdfolders on: data/ results/..."
 mkdir -p data/
 mkdir -p results/sort_bam results/trim_adapters results/assembly results/purge_haplotigs results/polish 
 mkdir -p results/assembly/flye/ results/assembly/hifiasm/
+mkdir -p benchmarks/
 # STEP 4
 echo "Checking conda installation..."
 if ! command -v conda &> /dev/null; then
@@ -49,7 +50,7 @@ if ! command -v conda &> /dev/null; then
     echo "For more information visit this link:https://docs.conda.io/projects/conda/en/stable/user-guide/install/index.html" 
     rm -rf data logs results
     cd ..
-    mv "$PROJECT" de_novo_assembly_workflow
+    mv "$PROJECT" nessie
     exit 1
 fi
 echo "conda found: $(conda --version)"

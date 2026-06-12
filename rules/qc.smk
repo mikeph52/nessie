@@ -8,6 +8,7 @@ rule nanostat_raw:
     threads: config["threads"]["nanostat"]
     conda: "envs/qc.yaml"
     log: "logs/qc/nanostat_raw/{sample}.log"
+    benchmark: "benchmarks/nanostat_raw/{sample}.txt"
     shell:
         """
         NanoStat \
@@ -28,6 +29,7 @@ rule nanostat_trimmed:
     threads: config["threads"]["nanostat"]
     conda: "envs/qc.yaml"
     log: "logs/qc/nanostat_trimmed/{sample}.log"
+    benchmark: "benchmarks/nanostat_trimmed/{sample}.txt"
     shell:
         """
         NanoStat \
@@ -51,6 +53,7 @@ rule quast:
     threads: config["threads"]["quast"]
     conda: "envs/qc.yaml"
     log: "logs/qc/quast/{sample}.log"
+    benchmark: "benchmarks/quast/{sample}.txt"
     shell:
         """
         REF_ARG=""
@@ -83,6 +86,7 @@ rule busco:
     threads: config["threads"]["busco"]
     conda: "envs/qc.yaml"
     log: "logs/qc/busco/{sample}.{lineage}.log"
+    benchmark: "benchmarks/busco/{sample}.txt"
     shell:
         """
         busco \
@@ -114,6 +118,7 @@ rule multiqc:
         indir  = "results/qc",
     conda: "envs/qc.yaml"
     log: "logs/qc/multiqc.log"
+    benchmark: "benchmarks/multiqc/{sample}.txt"
     shell:
         """
         multiqc \
