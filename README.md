@@ -223,6 +223,14 @@ snakemake -j 20 # select the cores you need
 ```
 ## Changelog
 _Changelog starts from the first public version (v.0.18.1, 1/6/2026)_
+
+### Version 0.20.1 (12/6/2026)
+- Command `benchmark:` added to every `rule.smk` to capture resources.
+- Banner logo added.
+- Success and error warning message added.
+- correct multiQC formatting issues.
+- Minor bugs fixed.
+
 ### Version 0.19.1 (7/6/2026)
 - Fix issue (https://github.com/mikeph52/nessie/issues/8)
 
