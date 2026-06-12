@@ -16,6 +16,8 @@ The pipeline is based on the one used in _De Novo Genome Assembly for an Endange
 ├── config
 │   └── config.yaml
 ├── data
+├── docs
+├── benchmarks
 ├── kraken2_db.sh
 ├── LICENSE
 ├── logs
