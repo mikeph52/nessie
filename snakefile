@@ -2,7 +2,7 @@ from datetime import datetime
 
 configfile: "config/config.yaml"
 
-W_VERSION = "0.20.2"
+W_VERSION = "0.21.1"
 SAMPLES  = config["samples"]
 ASSEMBLER = config["assembler"]
 
