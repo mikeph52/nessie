@@ -47,6 +47,6 @@ quast:
   extra_args: ""
 
 busco:
-  lineage: "fungi_odb10" # replace with your desired target lineage
+  lineage: "cetartiodactyla_odb10" # replace with your desired target lineage
   mode: "genome"
   extra_args: ""
