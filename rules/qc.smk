@@ -89,6 +89,8 @@ rule busco:
     benchmark: "benchmarks/busco/{sample}.{lineage}.txt"
     shell:
         """
+        export _JAVA_OPTIONS="-Xmx32g" # set default java memory to 32GB
+       
         busco \
             -i {input.fasta} \
             -o {wildcards.sample} \

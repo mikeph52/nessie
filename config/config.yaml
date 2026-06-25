@@ -32,7 +32,7 @@ hifiasm:
   extra_args: ""
 
 medaka:
-  model: "r1041_e82_400bps_hac_g632"   # i dkno if we need to use it
+  model: "r1041_e82_400bps_sup_v5.2.0"   # most recent basecaller model from dorado
   extra_args: ""
 
 purge_haplotigs:
