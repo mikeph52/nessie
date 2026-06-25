@@ -225,6 +225,12 @@ snakemake -j 20 # select the cores you need
 ```
 ## Changelog
 _Changelog starts from the first public version (v.0.18.1, 1/6/2026)_
+### version 0.21.1 (25/6/2026)
+- Fix java memory bug on BUSCO.
+- Change default basecaller model.
+
+### Version 0.20.2 (12/6/2026)
+- Minor benchmarking bugs fixed in qc.smk.
 
 ### Version 0.20.1 (12/6/2026)
 - Command `benchmark:` added to every `rule.smk` to capture resources.
