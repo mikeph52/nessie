@@ -1,9 +1,11 @@
 # Nessie: A de novo genome assembly workflow for animal species using long reads
 [![Snakemake](https://img.shields.io/badge/snakemake-≥5.6.0-brightgreen.svg?style=flat)](https://snakemake.readthedocs.io)
+[![Anaconda](https://img.shields.io/badge/Anaconda-44A833?logo=anaconda&logoColor=fff)](#)
+[![Python](https://img.shields.io/badge/Python-3776AB?logo=python&logoColor=fff)](#)
 
 ## Introduction
 This workflow supports sequecing data from both Oxford Nanopore and Pacbio HiFi sequencers, built with snakemake for maximum compatibility.
-The pipeline is based on the one used in _De Novo Genome Assembly for an Endangered Lemur Using Portable Nanopore Sequencing in Rural Madagascar_(Hauff et. all, 2025).
+The pipeline is based on the one used in _De Novo Genome Assembly for an Endangered Lemur Using Portable Nanopore Sequencing in Rural Madagascar_ (Hauff et. all, 2025).
 
 ## Workflow
 ### Pipeline structure
@@ -75,16 +77,16 @@ Configure workflow settings in `config.yaml`:
 
 **Workflow parameters:**
 
-| Parameter | Value |
+| Parameter | Description |
 |---|---|
-| assembler | flye or hifiasm |
-| genome_size | 500000000 (use exact number) |
-| threads.samtools | 16 |
-| flye.read_type | --nano-hq |
-| busco.lineage | fungi_odb10 (example for S. cerevisiae) |
-| busco.mode | genome |
-| medaka.model | r1041_e82_400bps_sup_v5.2.0 |
-| kraken2.db | data/kraken2_db |
+| assembler | Select assembler |
+| genome_size | Estimated genome size (exact number) |
+| threads | Number of threads used by tools |
+| flye.read_type | Sequencer type for Flye |
+| busco.lineage | Lineage from OrthoDB for BUSCO |
+| busco.mode | BUSCO mode |
+| medaka.model | Basecaller model |
+| kraken2.db | Kraken 2 DB destination |
 
 ### 5. Run workflow
 
