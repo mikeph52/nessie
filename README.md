@@ -50,7 +50,7 @@ The pipeline is based on the one used in _De Novo Genome Assembly for an Endange
 
 In order to run the workflow, conda must be installed. You can download conda from the [official site](https://docs.conda.io/projects/conda/en/stable/user-guide/install/index.html#regular-installation).
 
-_For more information, visit [Setup & usage guide](docs/guide.md)_
+_For more information, visit [Setup & usage guide](https://github.com/mikeph52/nessie/blob/main/docs/guide.md#1-conda)_
 
 ### 2. Clone workflow
 
@@ -88,7 +88,7 @@ Configure workflow settings in `config.yaml`:
 
 ### 5. Run workflow
 
-Run workflow directly with snakemake or with the Slurm workflow manager, in a HPC System setting, _see more [here](docs/guide.md)_:
+Run workflow directly with snakemake or with the Slurm workflow manager, in a HPC System setting, _see more [here](https://github.com/mikeph52/nessie/blob/main/docs/guide.md#execution-with-slurm)_:
 
 ```bash
 # run directly
