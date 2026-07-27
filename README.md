@@ -103,7 +103,10 @@ _For more information, visit [Setup & usage guide](docs/guide.md)_
 
 ## Changelog
 _Changelog starts from the first public version (v.0.18.1, 1/6/2026)_
-### version 0.21.1 (25/6/2026)
+### Version 0.22.0 (X/7/2026)
+- Fix issue (https://github.com/mikeph52/nessie/issues/11)
+
+### Version 0.21.1 (25/6/2026)
 - Fix java memory bug on BUSCO.
 - Change default basecaller model.
 
@@ -127,12 +130,14 @@ _Changelog starts from the first public version (v.0.18.1, 1/6/2026)_
 - Fixed medaka version in conda env.
 
 ## Tests & Benchmarks
-The workflow has been tested on 3 assemblies so far:
+The workflow has been tested and used on these assemblies so far:
 - **_Clonostachys chloroleuca_ strain Cc878**
 - **_Eulemur rufifrons_**
 - **_Alexandromys oeconomus_**
+- **_Stenella coeruleoalba_**
+- **_Ziphius cavirostris_**
 
-For the results of each test run, visit [benchmarks](docs/benchmarks.md).
+For the results of each run, visit [_Benchmarks & Results_](docs/benchmarks.md).
 
 ## Acknowledgements
 

@@ -1,4 +1,4 @@
-# Tests & Benchmarks
+# Benchmarks & Results
 ## Test run 1: _Clonostachys chloroleuca_ strain Cc878
 
 ### Data Information
