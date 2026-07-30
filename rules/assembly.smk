@@ -1,6 +1,6 @@
 rule flye_assembly:
     input:
-        fastq = "results/trim_adapters/{sample}_trimmed.fastq.gz"
+        fastq = "results/trim_adapters/{sample}_filtered.fastq.gz"
     output:
         fasta  = "results/assembly/flye/{sample}_assembly.fasta",
         info   = "results/assembly/flye/{sample}_assembly_info.txt",
@@ -38,7 +38,7 @@ rule flye_assembly:
 
 rule hifiasm_assembly:
     input:
-        fastq = "results/trim_adapters/{sample}_trimmed.fastq.gz"
+        fastq = "results/trim_adapters/{sample}_filtered.fastq.gz"
     output:
         fasta  = "results/assembly/hifiasm/{sample}_assembly.fasta",
     params:

@@ -103,8 +103,12 @@ _For more information, visit [Setup & usage guide](docs/guide.md)_
 
 ## Changelog
 _Changelog starts from the first public version (v.0.18.1, 1/6/2026)_
-### Version 0.22.0 (X/7/2026)
+### Version 0.22.1 (30/7/2026)
 - Fix issue (https://github.com/mikeph52/nessie/issues/11)
+- Fix issue (https://github.com/mikeph52/nessie/issues/12)
+- Fix issue (https://github.com/mikeph52/nessie/issues/10)
+- Add cleanup script.
+- Add filtering DCS fasta.
 
 ### Version 0.21.1 (25/6/2026)
 - Fix java memory bug on BUSCO.

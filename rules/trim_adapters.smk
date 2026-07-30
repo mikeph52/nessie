@@ -24,7 +24,7 @@ rule sort_bam:
 
 rule filter_dcs:
     input:
-        fastq = "data/{sample}.fastq.gz",
+        fastq = raw_fastq, # detected data file from snakefile
     output:
         filtered = "results/trim_adapters/{sample}_filtered.fastq.gz",
     params:
