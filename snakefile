@@ -6,7 +6,8 @@ W_VERSION = "0.21.1"
 SAMPLES  = config["samples"]
 ASSEMBLER = config["assembler"]
 
-include: "rules/trim_adapters.smk"
+include: "rules/trim_adapters.smk" # This is may obsolete
+include: "rules/filter_dcs.smk" # This is only filtering dcs
 include: "rules/assembly.smk"
 include: "rules/polish.smk"        # ONT only — comment out for HiFi
 include: "rules/rm_haplotigs.smk"
