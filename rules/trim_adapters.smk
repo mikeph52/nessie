@@ -22,20 +22,25 @@ rule sort_bam:
         echo "$(date): Samtools completed"
         """
 
-rule porechop:
+rule filter_dcs:
     input:
-        fastq = "results/sort_bam/{sample}.fastq.gz"
+        fastq = raw_fastq, # detected data file from snakefile
     output:
-        trimmed = "results/trim_adapters/{sample}_trimmed.fastq.gz"
-    log:
-        "logs/trim_adapters/{sample}.log"
-    threads: config["threads"]["porechop"]
-    conda: "envs/trim_adapters.yaml"
-    benchmark: "benchmarks/porechop/{sample}.txt"
+        filtered = "results/trim_adapters/{sample}_filtered.fastq.gz",
+    params:
+        dcs_ref = config.get("dcs_ref", "data/dcs_reference.fasta"),
+    threads: config["threads"]["samtools"]
+    conda:  "envs/trim_adapters.yaml"
+    log:       "logs/trim_adapters/{sample}_filter_dcs.log"
+    benchmark: "benchmarks/filter_dcs/{sample}.txt"
     shell:
         """
-        echo "$(date): Porechop is starting..."
-        porechop -i {input.fastq} -o {output.trimmed} --threads {threads} 2>> {log}
-        echo "$(date): Porechop completed"
-        echo "$(date): Trimming adapters completed."
+        echo "$(date): Filtering DCS is starting..."
+        minimap2 -t {threads} -ax map-ont \
+            {params.dcs_ref} {input.fastq} \
+            2>> {log} \
+            | samtools view -f 4 -b 2>> {log} \
+            | samtools fastq 2>> {log} \
+            | pigz -p {threads} > {output.filtered}
+        echo "$(date): Filtering DCS finished."
         """

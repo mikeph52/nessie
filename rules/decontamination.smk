@@ -4,6 +4,7 @@ rule decontamination:
     output:
         dec_fa = "results/decontamination/{sample}_dec.fa",
         report = "results/decontamination/{sample}_kraken2.report",
+        classification = "results/decontamination/{sample}_kraken2.output",
     params:
         outdir = "results/decontamination",
         extra = config["kraken2"]["extra_args"],
@@ -18,9 +19,11 @@ rule decontamination:
         kraken2 \
             --db {params.db} \
             --threads {threads} \
-            --confidence {params.confidence}\
-            --output {output.dec_fa} \
+            --confidence {params.confidence} \
+            --output {output.classification} \
             --report {output.report} \
-            --fasta-input {input.fa} \
-            --unclassified-out {output.dec_fa}
+            --unclassified-out {output.dec_fa} \
+            {params.extra} \
+            {input.fa} \
+            > {log} 2>&1
         """

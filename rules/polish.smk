@@ -1,6 +1,6 @@
 rule medaka:
     input:
-        fastq = "results/trim_adapters/{sample}_trimmed.fastq.gz",
+        fastq = "results/trim_adapters/{sample}_filtered.fastq.gz",
         fasta  = f"results/assembly/{ASSEMBLER}/{{sample}}_assembly.fasta",
     output:
         fasta  = "results/polish/medaka/{sample}_polished.fasta", # fix later

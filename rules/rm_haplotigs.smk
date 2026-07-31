@@ -1,7 +1,7 @@
 rule purge_haplotigs:
     input:
         fasta = "results/polish/medaka/{sample}_polished.fasta",
-        fastq = "results/trim_adapters/{sample}_trimmed.fastq.gz",
+        fastq = "results/trim_adapters/{sample}_filtered.fastq.gz",
     output:
         fa  = "results/purge_haplotigs/{sample}_purged.fa",
         hap = "results/purge_haplotigs/{sample}_hap.fa",

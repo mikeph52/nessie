@@ -4,6 +4,6 @@ channels:
   - defaults
 dependencies:
   - samtools
-  - porechop
   - htslib
   - pigz
+  - minimap2

@@ -21,6 +21,7 @@ echo "The following changes will happen:"
 echo " - Name project $PROJECT"
 echo " - Create directories: data/ logs/ results/"
 echo " - Create subfolders on: data/ results/"
+echo " - Move dcs_reference.fasta to data/"
 echo " - Check conda availability"
 echo " - Install snakemake if it is not installed"
 echo " - Create 'snakemake_assembly' conda venv"
@@ -36,13 +37,14 @@ mv nessie "$PROJECT"
 cd "$PROJECT"
 # STEP 2
 echo "Creating directories: data/ logs/ results/ benchmarks/..."
-mkdir data logs results
+mkdir logs results
 # STEP 3
 echo "Creating subdfolders on: data/ results/..."
 mkdir -p data/
 mkdir -p results/sort_bam results/trim_adapters results/assembly results/purge_haplotigs results/polish 
 mkdir -p results/assembly/flye/ results/assembly/hifiasm/
 mkdir -p benchmarks/
+mv dcs_reference.fasta data/
 # STEP 4
 echo "Checking conda installation..."
 if ! command -v conda &> /dev/null; then

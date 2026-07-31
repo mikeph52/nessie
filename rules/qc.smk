@@ -21,15 +21,15 @@ rule nanostat_raw:
 
 rule nanostat_trimmed:
     input:
-        fastq = "results/trim_adapters/{sample}_trimmed.fastq.gz",
+        fastq = "results/trim_adapters/{sample}_filtered.fastq.gz",
     output:
-        stats = "results/qc/nanostat/{sample}_trimmed/NanoStats.txt",
+        stats = "results/qc/nanostat/{sample}_filtered/NanoStats.txt",
     params:
-        outdir = "results/qc/nanostat/{sample}_trimmed",
+        outdir = "results/qc/nanostat/{sample}_filtered",
     threads: config["threads"]["nanostat"]
     conda: "envs/qc.yaml"
-    log: "logs/qc/nanostat_trimmed/{sample}.log"
-    benchmark: "benchmarks/nanostat_trimmed/{sample}.txt"
+    log: "logs/qc/nanostat_filtered/{sample}.log"
+    benchmark: "benchmarks/nanostat_filtered/{sample}.txt"
     shell:
         """
         NanoStat \
@@ -107,7 +107,7 @@ rule multiqc:
     input:
         expand("results/qc/nanostat/{sample}_raw/NanoStats.txt",
                sample=SAMPLES),
-        expand("results/qc/nanostat/{sample}_trimmed/NanoStats.txt",
+        expand("results/qc/nanostat/{sample}_filtered/NanoStats.txt",
                sample=SAMPLES),
         expand("results/qc/quast/{sample}/report.tsv",
                sample=SAMPLES),
