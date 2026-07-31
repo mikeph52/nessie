@@ -24,10 +24,10 @@ cd ..
 # STEP 1: rm directories
 rm -rf data/ logs/ results/ benchmarks/
 # STEP 2: move setup.sh to parent
-PROJECT=$(cat scripts/.setup.env)
+PROJECT=$(cat rules/scripts/.setup.env)
 # parent --> prev
 cd ..
-mv "$PROJECT"/scripts/setup.sh "$PROJECT"
+mv "$PROJECT"/rules/scripts/setup.sh "$PROJECT"
 # STEP 3: rename proj to default
 mv "$PROJECT" nessie
 # STEP 4: remove snakemake env

@@ -14,8 +14,8 @@ if [[ -z "$PROJECT" ]]; then
     echo "Project name cannot be empty."
     exit 1
 fi
-# save project name to scripts/
-echo "$PROJECT" > scripts/.setup.env
+# save project name to rules/scripts/ (v.0.22.2)
+echo "$PROJECT" > rules/scripts/.setup.env
 
 echo "The following changes will happen:"
 echo " - Name project $PROJECT"
@@ -26,7 +26,7 @@ echo " - Check conda availability"
 echo " - Install snakemake if it is not installed"
 echo " - Create 'snakemake_assembly' conda venv"
 echo " - Remove docs/"
-echo " - Move setup.sh to scripts/"
+echo " - Move setup.sh to rules/scripts/"
 
 read -p "Continue? (Y/N): " confirm && [[ $confirm == [yY] || $confirm == [yY][eE][sS] ]] || exit 1
 
@@ -63,8 +63,8 @@ conda create -n snakemake_assembly -c conda-forge -c bioconda snakemake mamba -y
 echo "Remove docs/..."
 rm -rf docs/
 # STEP 7
-echo "Moving setup.sh to scripts/..."
-mv setup.sh scripts/
+echo "Moving setup.sh to rules/scripts/..."
+mv setup.sh rules/scripts/
 echo "Cd out of the folder and enter again to refresh the project title."
 
 echo "Process finished"
