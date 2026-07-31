@@ -7,5 +7,5 @@ rule plots:
     output:
         plot = "results/qc/assembly_stats.png",
     log:    "logs/qc/plot_stats.log"
-    conda:  "envs/plot_stats.yaml"
+    conda:  "envs/plots.yaml"
     script: "scripts/plots.py"
