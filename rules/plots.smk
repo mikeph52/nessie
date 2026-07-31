@@ -8,4 +8,4 @@ rule plots:
         plot = "results/qc/assembly_stats.png",
     log:    "logs/qc/plot_stats.log"
     conda:  "envs/plot_stats.yaml"
-    script: "scripts/plot_assembly_stats.py"
+    script: "scripts/plots.py"
