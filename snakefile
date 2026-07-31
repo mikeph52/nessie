@@ -36,6 +36,7 @@ include: "rules/rm_haplotigs.smk"
 #include: "rules/custom_k2_db.smk" # uncomment to build a custom Kraken2 db
 include: "rules/decontamination.smk"
 include: "rules/qc.smk"
+include: "rules/plots.smk"
 
 BANNER = r"""
         .-') _   ('-.    .-')     .-')               ('-.   
@@ -79,3 +80,4 @@ rule all:
         expand("results/qc/quast/{sample}/report.tsv", sample=SAMPLES),
         expand("results/qc/busco/{sample}/short_summary.specific.{lineage}.{sample}.txt", sample=SAMPLES, lineage=config["busco"]["lineage"]),
         expand("results/qc/multiqc/multiqc_report.html"),
+        expand("results/qc/assembly_stats.png"),
