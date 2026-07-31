@@ -1,6 +1,6 @@
 rule nanostat_raw:
     input:
-        fastq = "results/sort_bam/{sample}.fastq.gz",
+        fastq = raw_fastq,
     output:
         stats = "results/qc/nanostat/{sample}_raw/NanoStats.txt",
     params:
