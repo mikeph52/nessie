@@ -27,6 +27,13 @@ def raw_fastq(wildcards):
         return f"data/{wildcards.sample}.fastq.gz"
     else:
         return f"results/sort_bam/{wildcards.sample}.fastq.gz"
+
+# for polishing=True
+def get_assembly_input(wildcards):
+    if config.get("polish", True):
+        return f"results/polish/medaka/{wildcards.sample}_polished.fasta"
+    else:
+        return f"results/assembly/{ASSEMBLER}/{wildcards.sample}_assembly.fasta"
 # rules
 include: "rules/checksum.smk" # for integrity check
 include: "rules/trim_adapters.smk"
@@ -60,6 +67,7 @@ onstart:
     Samples: {SAMPLES}
     Assembler:{ASSEMBLER}
     Input: {INPUT_TYPES}
+    Polish: {config.get("polish", True)}
     """)
 
 onsuccess:
@@ -77,10 +85,11 @@ rule all:
         expand("results/qc/nanostat/{sample}_raw/NanoStats.txt", sample=SAMPLES),
         expand("results/trim_adapters/{sample}_filtered.fastq.gz", sample=SAMPLES),
         expand("results/assembly/{assembler}/{sample}_assembly.fasta", assembler=ASSEMBLER, sample=SAMPLES),
-        expand("results/polish/medaka/{sample}_polished.fasta", sample=SAMPLES),
+        *(expand("results/polish/medaka/{sample}_polished.fasta", sample=SAMPLES) # conditional polishing
+            if config.get("polish", True) else[]),
         expand("results/purge_haplotigs/{sample}_purged.fa", sample=SAMPLES),
         expand("results/decontamination/{sample}_dec.fa", sample=SAMPLES),
         expand("results/qc/quast/{sample}/report.tsv", sample=SAMPLES),
         expand("results/qc/busco/{sample}/short_summary.specific.{lineage}.{sample}.txt", sample=SAMPLES, lineage=config["busco"]["lineage"]),
-        expand("results/qc/multiqc/multiqc_report.html"),
-        expand("results/qc/assembly_stats.png"),
+        "results/qc/multiqc/multiqc_report.html",
+        "results/qc/assembly_stats.png",
