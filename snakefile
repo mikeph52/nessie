@@ -1,6 +1,5 @@
 from datetime import datetime
 import os
-import glob
 
 # This is the config file
 configfile: "config/config.yaml"
@@ -32,7 +31,8 @@ def raw_fastq(wildcards):
 include: "rules/checksum.smk" # for integrity check
 include: "rules/trim_adapters.smk"
 include: "rules/assembly.smk"
-include: "rules/polish.smk" # ONT only — comment out for HiFi
+if config.get("polish", True): 
+    include: "rules/polish.smk" 
 include: "rules/rm_haplotigs.smk"
 #include: "rules/custom_k2_db.smk" # uncomment to build a custom Kraken2 db
 include: "rules/decontamination.smk"
@@ -70,6 +70,8 @@ onerror:
 rule all:
     input:
         # sort bam only if bam detected
+        expand("results/checksums/{sample}_integrity.ok", sample=SAMPLES),
+        expand("results/checksums/{sample}.sha256", sample=SAMPLES),
         expand("results/sort_bam/{sample}.fastq.gz", sample=SAMPLES)
             if any(t == "bam" for t in INPUT_TYPES.values()) else [],
         expand("results/qc/nanostat/{sample}_raw/NanoStats.txt", sample=SAMPLES),
