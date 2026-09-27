@@ -5,7 +5,7 @@ import glob
 # This is the config file
 configfile: "config/config.yaml"
 
-W_VERSION = "0.23.1"
+W_VERSION = "0.24.1"
 SAMPLES  = config["samples"]
 ASSEMBLER = config["assembler"]
 
@@ -29,9 +29,10 @@ def raw_fastq(wildcards):
     else:
         return f"results/sort_bam/{wildcards.sample}.fastq.gz"
 # rules
-include: "rules/trim_adapters.smk" # This is may obsolete
+include: "rules/checksum.smk" # for integrity check
+include: "rules/trim_adapters.smk"
 include: "rules/assembly.smk"
-include: "rules/polish.smk"        # ONT only — comment out for HiFi
+include: "rules/polish.smk" # ONT only — comment out for HiFi
 include: "rules/rm_haplotigs.smk"
 #include: "rules/custom_k2_db.smk" # uncomment to build a custom Kraken2 db
 include: "rules/decontamination.smk"

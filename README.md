@@ -111,6 +111,10 @@ _For more information, visit [Setup & usage guide](docs/guide.md)_
 
 ## Changelog
 _Changelog starts from the first public version (v.0.18.1, 1/6/2026)_
+### Version 0.24.1 (27/9/2026)
+- Remove unused rules.
+- 
+
 ### Version 0.23.1 (5/9/2026)
 - Fix issue (https://github.com/mikeph52/nessie/issues/17)
 - Fix issue (https://github.com/mikeph52/nessie/issues/18)

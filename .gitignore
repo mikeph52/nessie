@@ -6,3 +6,4 @@ scripts/.setup.env
 .snakemake/
 misc.sh
 benchmarks/
+settings.json
