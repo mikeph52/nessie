@@ -1,9 +1,8 @@
-# List of sample IDs --> .BAM
+# List of sample IDs
 # Maybe change the variable i dkno
 samples:
   - sample1
   - sample2
-  # etc 
 
 # Select what assembler you want to use: flye or hifiasm
 assembler: flye
@@ -15,7 +14,7 @@ threads:
   samtools: 16
   flye: 32
   hifiasm: 32
-  medaka: 8 # still idkno if im gonna use it
+  medaka: 16
   purge_haplotigs: 16
   kraken2: 16
   quast: 8
@@ -29,6 +28,8 @@ flye:
 
 hifiasm:
   extra_args: ""
+
+polish: true #if HiFi ,set to false
 
 medaka:
   model: "r1041_e82_400bps_sup_v5.2.0"   # most recent basecaller model from dorado
@@ -48,4 +49,5 @@ quast:
 busco:
   lineage: "cetartiodactyla_odb10" # replace with your desired target lineage
   mode: "genome"
+  download_path: "busco_downloads" # for offline mode
   extra_args: ""

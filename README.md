@@ -15,41 +15,43 @@ The pipeline is based on the one used in _De Novo Genome Assembly for an Endange
 ### Project structure
 ```bash
 .
-├── LICENSE
-├── README.md
 ├── config
-│   └── config.yaml
+│   └── config.yaml
 ├── dcs_reference.fasta
 ├── docs
-│   ├── benchmarks.md
-│   ├── guide.md
-│   ├── snakemake_workflow.png
-│   ├── snakemake_workflow_2.png
-│   ├── snakemake_workflow_3.png
-│   ├── workflow_label.png
-│   └── workflow_nolabel.png
+│   ├── benchmarks.md
+│   ├── guide.md
+│   ├── snakemake_workflow_2.png
+│   ├── snakemake_workflow_3.png
+│   ├── snakemake_workflow.png
+│   ├── workflow_label.png
+│   └── workflow_nolabel.png
 ├── kraken2_db.sh
+├── LICENSE
+├── README.md
 ├── rules
-│   ├── assembly.smk
-│   ├── custom_k2_db.smk
-│   ├── decontamination.smk
-│   ├── envs
-│   │   ├── assembly.yaml
-│   │   ├── decontamination.yaml
-│   │   ├── plots.yaml
-│   │   ├── polish.yaml
-│   │   ├── qc.yaml
-│   │   ├── rm_haplotigs.yaml
-│   │   └── trim_adapters.yaml
-│   ├── plots.smk
-│   ├── polish.smk
-│   ├── qc.smk
-│   ├── rm_haplotigs.smk
-│   ├── scripts
-│   │   ├── cleanup.sh
-│   │   ├── plots.py
-│   │   └── reset.sh
-│   └── trim_adapters.smk
+│   ├── assembly.smk
+│   ├── checksum.smk
+│   ├── custom_k2_db.smk
+│   ├── decontamination.smk
+│   ├── envs
+│   │   ├── assembly.yaml
+│   │   ├── decontamination.yaml
+│   │   ├── plots.yaml
+│   │   ├── polish.yaml
+│   │   ├── qc.yaml
+│   │   ├── rm_haplotigs.yaml
+│   │   └── trim_adapters.yaml
+│   ├── plots.smk
+│   ├── polish.smk
+│   ├── qc.smk
+│   ├── rm_haplotigs.smk
+│   ├── scripts
+│   │   ├── checksum.py
+│   │   ├── cleanup.sh
+│   │   ├── plots.py
+│   │   └── reset.sh
+│   └── trim_adapters.smk
 ├── setup.sh
 ├── snakefile
 └── workflow.sh
@@ -88,6 +90,7 @@ Configure workflow settings in `config.yaml`:
 | Parameter | Description |
 |---|---|
 | assembler | Select assembler |
+| polish | Enable polishing (only for ONT reads) |
 | genome_size | Estimated genome size (exact number) |
 | threads | Number of threads used by tools |
 | flye.read_type | Sequencer type for Flye |
@@ -111,6 +114,12 @@ _For more information, visit [Setup & usage guide](docs/guide.md)_
 
 ## Changelog
 _Changelog starts from the first public version (v.0.18.1, 1/6/2026)_
+### Version 0.24.1 (27/9/2026)
+- Add SHA-256 checksum integrity check (https://github.com/mikeph52/nessie/issues/20).
+- Add polish flag in config.yaml.
+- Remove unused rules.
+- Minor bugs fixed.
+
 ### Version 0.23.1 (5/9/2026)
 - Fix issue (https://github.com/mikeph52/nessie/issues/17)
 - Fix issue (https://github.com/mikeph52/nessie/issues/18)
