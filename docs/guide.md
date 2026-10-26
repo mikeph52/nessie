@@ -18,10 +18,9 @@ Some recomended options on threads:
 | Tool | Threads |
 |------|---------|
 | samtools | 16 |
-| porechop | 16 |
 | flye | 32 |
 | hifiasm | 32 |
-| medaka | 8 |
+| medaka | 16 |
 | purge_haplotigs | 16 |
 | kraken2 | 16 |
 | nanostat | 8 |
@@ -32,7 +31,6 @@ Some recomended options on threads:
 ### Depedencies
 - **Flye**
 - **Hifiasm**
-- **Porechop**
 - **Medaka**
 - **Purge_haplotigs**
 - **Nanostat**
@@ -141,6 +139,9 @@ Enter the genome size of the organism. It's required for **Flye** and **QUAST** 
 ```yaml
 genome_size: "500m"
 ```
+
+- **Polishing**
+
 
 - **Threads**
 
