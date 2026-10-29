@@ -3,8 +3,17 @@ channels:
   - bioconda
   - defaults
 dependencies:
+  - singularity # Look bellow for more info
   - mitohifi
   - blast
   - samtools # i think
   - python=3.10 # double check
   - minimap2 # optional
+
+# The main problem is how the mitohifi workflow will be operated inside zorba hpc
+# and how this will be replicated in other HPC systems. 
+# The main options are:
+# a) Running a container via Singularity
+# b) Manualy building and running the workflow with a separate python env
+# The most viable option is the option a) but i don't know how conda handles
+# the container operations and depedencies.
