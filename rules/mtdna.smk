@@ -13,4 +13,8 @@ rule mtdna_detection:
         echo "$(date): mtDNA detection is starting (rules/mtdna.smk)..."
         echo "$(date): mitoHiFi is starting..."
 
+        singularity mitohifi
+
         """
+
+    # check mtdna.yaml for more info regarding the mitohifi running method
