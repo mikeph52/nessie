@@ -10,7 +10,7 @@ The pipeline is based on the one used in _De Novo Genome Assembly for an Endange
 ## Workflow
 ### Pipeline structure
 
-![](docs/workflow_label.png)
+![](docs/nessie_flowchart.png)
 
 ### Project structure
 ```bash
