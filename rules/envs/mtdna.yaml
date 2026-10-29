@@ -1,0 +1,10 @@
+channels:
+  - conda-forge
+  - bioconda
+  - defaults
+dependencies:
+  - mitohifi
+  - blast
+  - samtools # i think
+  - python=3.10 # double check
+  - minimap2 # optional
