@@ -13,6 +13,10 @@ rule mtdna_detection:
         echo "$(date): mtDNA detection is starting (rules/mtdna.smk)..."
         echo "$(date): mitoHiFi is starting..."
 
+        # check if singularity exists
+        which singularity
+        export $PATH=
+
         singularity mitohifi
 
         """
