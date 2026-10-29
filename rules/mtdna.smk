@@ -2,6 +2,7 @@ rule mtdna_detection:
     input:
         fasta  = "results/assembly/flye/{sample}_assembly.fasta",
     output:
+        mt_dna = "results/mtdna/{sample}_mtdna.fasta"
     threads: config["threads"]["mitohifi"] # change when completed
     conda: "envs/mtdna.yaml"
     log: "logs/mtdna/{sample}.log"

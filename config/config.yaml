@@ -21,6 +21,7 @@ threads:
   busco: 16
   multiqc: 8
   nanostat: 8
+  mitohifi: 16 # maybe, or enter singularity cores
 
 flye:
   read_type: "--nano-hq"    # --nano-raw # --nano-hq # --pacbio-raw # --pacbio-hifi
