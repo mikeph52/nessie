@@ -41,8 +41,7 @@ mkdir logs results
 # STEP 3
 echo "Creating subdfolders on: data/ results/..."
 mkdir -p data/
-mkdir -p results/sort_bam results/trim_adapters results/assembly results/purge_haplotigs results/polish 
-mkdir -p results/assembly/flye/ results/assembly/hifiasm/
+mkdir -p results/sort_bam results/trim_adapters results/assembly results/purge_haplotigs results/polish
 mkdir -p benchmarks/
 mv dcs_reference.fasta data/
 # STEP 4

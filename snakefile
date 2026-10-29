@@ -45,6 +45,7 @@ include: "rules/rm_haplotigs.smk"
 include: "rules/decontamination.smk"
 include: "rules/qc.smk"
 include: "rules/plots.smk"
+include: "rules/mtdna.smk"
 
 BANNER = r"""
         .-') _   ('-.    .-')     .-')               ('-.   
